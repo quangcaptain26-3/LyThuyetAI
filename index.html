@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindmap: Trí Tuệ Nhân Tạo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .mindmap {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .center {
+            background: #7FB069;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .center:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .branches {
+            display: flex;
+            gap: 40px;
+        }
+
+        .branch {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            max-width: 600px;
+        }
+
+        .branch::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #9BA7C0;
+            transition: background 0.3s ease;
+        }
+
+        .main-topic {
+            background: #6B9AC4;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 5px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .main-topic:hover {
+            background: #5A8AB5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 7px rgba(0, 0, 0, 0.15);
+        }
+
+        .topic-container {
+            margin: 15px 0;
+            border-left: 2px solid #9BA7C0;
+            padding-left: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .topic-container:hover {
+            border-left-color: #6B9AC4;
+        }
+
+        .sub-topic {
+            background: #D4B483;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sub-topic:hover {
+            background: #C5A472;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .theory {
+            background: #9B8EA9;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .theory:hover {
+            background: #8C7F98;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .example {
+            background: #E8998D;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.9em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .example:hover {
+            background: #D9887C;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mindmap">
+        <div class="center-container">
+            <div class="center">Trí Tuệ Nhân Tạo</div>
+            <div class="branches">
+                <div class="branch">
+                    <div class="main-topic">Phần I: Giải quyết vấn đề bằng tìm kiếm</div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">1. Tìm kiếm theo bề rộng (BFS)</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Thuật toán tìm kiếm theo chiều rộng là một thuật toán duyệt đồ thị theo
+                                    từng lớp, khám phá tất cả các đỉnh ở cùng một mức trước khi đi xuống mức tiếp theo.
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Sử dụng cấu trúc dữ liệu Queue (FIFO)</li>
+                                        <li>Độ phức tạp thời gian: O(b^d) với b là số nhánh và d là độ sâu</li>
+                                        <li>Độ phức tạp không gian: O(b^d)</li>
+                                    </ul>
+                                </li>
+                                <li>Ưu điểm:
+                                    <ul>
+                                        <li>Đảm bảo tìm được đường đi ngắn nhất</li>
+                                        <li>Hoàn chỉnh: luôn tìm ra lời giải nếu tồn tại</li>
+                                    </ul>
+                                </li>
+                                <li>Nhược điểm:
+                                    <ul>
+                                        <li>Tốn nhiều bộ nhớ</li>
+                                        <li>Không hiệu quả với không gian tìm kiếm lớn</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trong mê cung
+                            - Tìm bạn bè trong mạng xã hội trong phạm vi n connections
+                            - Tìm trạng thái đích trong puzzle game
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">2. Tìm kiếm theo độ sâu (DFS)</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Thuật toán tìm kiếm theo chiều sâu là một thuật toán duyệt đồ thị/cây
+                                    theo chiều sâu, ưu tiên khám phá càng sâu càng tốt trước khi quay lui.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Sử dụng cấu trúc dữ liệu Stack (LIFO)</li>
+                                        <li>Đệ quy hoặc lặp với stack</li>
+                                        <li>Đánh dấu các đỉnh đã thăm</li>
+                                    </ul>
+                                </li>
+                                <li>Độ phức tạp:
+                                    <ul>
+                                        <li>Thời gian: O(b^m) với b là số nhánh và m là độ sâu tối đa</li>
+                                        <li>Không gian: O(bm)</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng phổ biến:
+                                    <ul>
+                                        <li>Giải các bài toán tổ hợp</li>
+                                        <li>Tìm kiếm đường đi trong đồ thị</li>
+                                        <li>Giải các puzzle game</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Giải Sudoku
+                            - Tìm đường đi trong mê cung
+                            - Giải bài toán N-Queens
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">3. Thuật toán A*</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: A* là thuật toán tìm kiếm đường đi tốt nhất kết hợp giữa chi phí thực tế
+                                    và chi phí ước lượng.</li>
+                                <li>Công thức:
+                                    <ul>
+                                        <li>f(n) = g(n) + h(n)</li>
+                                        <li>g(n): chi phí thực từ điểm bắt đầu đến node hiện tại</li>
+                                        <li>h(n): chi phí ước lượng từ node hiện tại đến đích</li>
+                                    </ul>
+                                </li>
+                                <li>Điều kiện hàm heuristic:
+                                    <ul>
+                                        <li>Admissible: không được ước lượng quá chi phí thực</li>
+                                        <li>Consistent: h(n) ≤ c(n,a) + h(a) với mọi node a kề với n</li>
+                                    </ul>
+                                </li>
+                                <li>Tính chất:
+                                    <ul>
+                                        <li>Đầy đủ: luôn tìm ra lời giải nếu tồn tại</li>
+                                        <li>Tối ưu: đảm bảo tìm ra đường đi ngắn nhất nếu h(n) admissible</li>
+                                        <li>Hiệu quả hơn Dijkstra khi có heuristic tốt</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trên bản đồ với heuristic là khoảng cách đường chim bay
+                            - Giải 8-puzzle với Manhattan distance
+                            - Pathfinding trong game
+                        </div>
+                    </div>
+                    <div class="topic-container">
+                        <div class="sub-topic">4. Tìm kiếm sâu lặp (IDS)</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Tìm kiếm sâu lặp là một thuật toán tìm kiếm kết hợp giữa tìm kiếm theo
+                                    độ sâu và tìm kiếm theo bề rộng.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Thực hiện tìm kiếm theo độ sâu với độ sâu tăng dần</li>
+                                        <li>Quay lại tìm kiếm theo bề rộng nếu không tìm thấy lời giải</li>
+                                    </ul>
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Đảm bảo tìm được lời giải nếu tồn tại</li>
+                                        <li>Hiệu quả hơn BFS với không gian tìm kiếm lớn</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trong mê cung
+                            - Tìm bạn bè trong mạng xã hội trong phạm vi n connections
+                            - Tìm trạng thái đích trong puzzle game
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">5. Tìm kiếm Minimax</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Minimax là một thuật toán tìm kiếm trong trò chơi hai người với mục tiêu
+                                    tối
+                                    ưu hóa lợi ích của người chơi và giả sử đối thủ chơi tối ưu.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Min: đối với lượt chơi của đối thủ</li>
+                                        <li>Max: đối với lượt chơi của mình</li>
+                                        <li>Đánh giá giá trị của node lá</li>
+                                    </ul>
+                                </li>
+                                <li>Thuật toán:
+                                    <ul>
+                                        <li>Minimax: tìm giá trị tối ưu của node</li>
+                                        <li>Alpha-Beta Pruning: cắt tỉa các node không cần thiết</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Game AI: Tic-tac-toe, Chess, Checkers</li>
+                                        <li>Game theory</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm nước đi tối ưu trong Tic-tac-toe
+                            - Tìm chiến lược chơi trong Chess
+                            - Tìm nước đi tối ưu trong Checkers
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">6. Tìm kiếm leo đồi</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Tìm kiếm leo đồi là một thuật toán tìm kiếm tối ưu trong không gian tìm
+                                    kiếm
+                                    không đồng nhất.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Chọn hướng tốt nhất tại mỗi bước</li>
+                                        <li>Đánh giá giá trị của node lá</li>
+                                    </ul>
+                                </li>
+                                <li>Thuật toán:
+                                    <ul>
+                                        <li>Greedy Best-First Search: chọn node có giá trị heuristic tốt nhất</li>
+                                        <li>A*: kết hợp giữa chi phí thực và chi phí ước lượng</li>
+                                    </ul>
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Hiệu quả với không gian tìm kiếm lớn</li>
+                                        <li>Không đảm bảo tìm được lời giải tối ưu</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trên bản đồ với heuristic là khoảng cách đường chim bay
+                            - Pathfinding trong game
+                            - Tìm kiếm trên web
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">7. Tìm kiếm tốt nhất (Best-First Search)</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Tìm kiếm tốt nhất là một thuật toán tìm kiếm không thông tin dựa trên
+                                    giá trị
+                                    heuristic của các node.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Chọn node có giá trị heuristic tốt nhất</li>
+                                        <li>Không cần đánh giá chi phí thực</li>
+                                    </ul>
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Hiệu quả với không gian tìm kiếm lớn</li>
+                                        <li>Không đảm bảo tìm được lời giải tối ưu</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trên bản đồ với heuristic là khoảng cách đường chim bay
+                            - Pathfinding trong game
+                            - Tìm kiếm trên web
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">8. Tìm kiếm BEAM</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Tìm kiếm BEAM là một thuật toán tìm kiếm không thông tin dựa trên giá
+                                    trị
+                                    heuristic của các node.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Chọn k node có giá trị heuristic tốt nhất</li>
+                                        <li>Không cần đánh giá chi phí thực</li>
+                                    </ul>
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Hiệu quả với không gian tìm kiếm lớn</li>
+                                        <li>Không đảm bảo tìm được lời giải tối ưu</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trên bản đồ với heuristic là khoảng cách đường chim bay
+                            - Pathfinding trong game
+                            - Tìm kiếm trên web
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">9. Tìm kiếm nhánh và cận (Branch and Bound)</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Tìm kiếm nhánh và cận là một phương pháp tìm kiếm tối ưu trong không
+                                    gian
+                                    tìm kiếm không đồng nhất.</li>
+                                <li>Cơ chế hoạt động:
+                                    <ul>
+                                        <li>Chia bài toán thành các nhánh con</li>
+                                        <li>Đánh giá giá trị của node lá</li>
+                                        <li>Cắt tỉa các nhánh không cần thiết</li>
+                                    </ul>
+                                </li>
+                                <li>Đặc điểm:
+                                    <ul>
+                                        <li>Đảm bảo tìm được lời giải tối ưu</li>
+                                        <li>Hiệu quả với không gian tìm kiếm lớn</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Tìm đường đi trong mê cung
+                            - Tìm nước đi tối ưu trong game
+                            - Tìm lời giải tối ưu trong bài toán tổ hợp
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="branch">
+                    <div class="main-topic">Phần II: Tri thức và lập luận</div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">1. Logic mệnh đề</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Logic mệnh đề là hệ thống logic cơ bản nhất, làm việc với các mệnh đề và
+                                    các phép toán logic.</li>
+                                <li>Các thành phần cơ bản:
+                                    <ul>
+                                        <li>Mệnh đề nguyên tử: các mệnh đề đơn giản không thể phân tách</li>
+                                        <li>Phép toán logic: AND (∧), OR (∨), NOT (¬), IMPLY (→), EQUIVALENT (↔)</li>
+                                        <li>Bảng chân trị cho mỗi phép toán</li>
+                                    </ul>
+                                </li>
+                                <li>Các quy tắc suy luận:
+                                    <ul>
+                                        <li>Modus Ponens: (p → q, p) ⊢ q</li>
+                                        <li>Modus Tollens: (p → q, ¬q) ⊢ ¬p</li>
+                                        <li>Quy tắc phân giải: (p ∨ q, ¬p ∨ r) ⊢ q ∨ r</li>
+                                    </ul>
+                                </li>
+                                <li>Phương pháp chứng minh:
+                                    <ul>
+                                        <li>Bảng chân trị</li>
+                                        <li>Chứng minh bằng phản chứng</li>
+                                        <li>Chứng minh bằng suy luận</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">2. Hệ chuyên gia</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Hệ chuyên gia là hệ thống máy tính có khả năng mô phỏng quá trình ra
+                                    quyết định của chuyên gia trong một lĩnh vực cụ thể.</li>
+                                <li>Cấu trúc:
+                                    <ul>
+                                        <li>Cơ sở tri thức: chứa các luật và sự kiện</li>
+                                        <li>Cơ chế suy luận: áp dụng các luật vào sự kiện</li>
+                                        <li>Giao diện người dùng</li>
+                                        <li>Module giải thích: giải thích cách đi đến kết luận</li>
+                                    </ul>
+                                </li>
+                                <li>Phương pháp biểu diễn tri thức:
+                                    <ul>
+                                        <li>Luật IF-THEN</li>
+                                        <li>Frames và Scripts</li>
+                                        <li>Mạng ngữ nghĩa</li>
+                                        <li>Logic mệnh đề và vị từ</li>
+                                    </ul>
+                                </li>
+                                <li>Quy trình phát triển:
+                                    <ul>
+                                        <li>Thu thập tri thức từ chuyên gia</li>
+                                        <li>Mã hóa tri thức</li>
+                                        <li>Kiểm thử và tinh chỉnh</li>
+                                        <li>Bảo trì và cập nhật</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - MYCIN: chẩn đoán bệnh nhiễm trùng máu
+                            - DENDRAL: phân tích cấu trúc phân tử
+                            - PROSPECTOR: tìm kiếm khoáng sản
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">3. Biểu diễn tri thức</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Biểu diễn tri thức là quá trình chuyển đổi thông tin thành dạng có thể
+                                    xử
+                                    lý bởi máy tính.</li>
+                                <li>Các phương pháp biểu diễn:
+                                    <ul>
+                                        <li>Biểu diễn logic: biểu diễn tri thức bằng logic mệnh đề hoặc logic ấn định
+                                        </li>
+                                        <li>Biểu diễn mạng ngữ nghĩa: biểu diễn tri thức dưới dạng mạng liên kết các
+                                            khái niệm
+                                        </li>
+                                        <li>Biểu diễn khái niệm: biểu diễn tri thức dưới dạng khái niệm và mối quan hệ
+                                            giữa
+                                            chúng</li>
+                                        <li>Biểu diễn frame: biểu diễn tri thức dưới dạng frame chứa các thuộc tính và
+                                            giá trị
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Hệ chuyên gia</li>
+                                        <li>Trí tuệ nhân tạo</li>
+                                        <li>Web semantic</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Biểu diễn tri thức trong hệ chuyên gia
+                            - Biểu diễn tri thức trong trí tuệ nhân tạo
+                            - Biểu diễn tri thức trong web semantic
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">4. Luật suy diễn</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Luật suy diễn là quá trình suy luận từ các sự kiện đã biết đến sự kiện
+                                    chưa
+                                    biết.</li>
+                                <li>Các loại luật suy diễn:
+                                    <ul>
+                                        <li>Modus Ponens: (p → q, p) ⊢ q</li>
+                                        <li>Modus Tollens: (p → q, ¬q) ⊢ ¬p</li>
+                                        <li>Quy tắc phân giải: (p ∨ q, ¬p ∨ r) ⊢ q ∨ r</li>
+                                        <li>Quy tắc đại số Boole: AND, OR, NOT</li>
+                                    </ul>
+                                </li>
+                                <li>Phương pháp suy diễn:
+                                    <ul>
+                                        <li>Suy diễn tiến: từ dữ kiện suy ra kết luận</li>
+                                        <li>Suy diễn ngược: từ kết luận suy ra dữ kiện</li>
+                                        <li>Suy diễn tiến dựa trên luật: áp dụng luật suy diễn để suy ra kết luận</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Hệ chuyên gia</li>
+                                        <li>Logic mệnh đề</li>
+                                        <li>Trí tuệ nhân tạo</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">5. Luật phân giải</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Luật phân giải là một quy tắc suy luận trong logic mệnh đề, giúp chứng
+                                    minh
+                                    một mệnh đề bằng cách phân giải nó thành các mệnh đề khác.</li>
+                                <li>Cấu trúc:
+                                    <ul>
+                                        <li>Định nghĩa: (p ∨ q, ¬p ∨ r) ⊢ q ∨ r</li>
+                                        <li>Phân loại: phân giải theo phép toán OR</li>
+                                        <li>Ứng dụng: chứng minh tính hợp lệ của các lập luận</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">6. Logic vị từ cấp một</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Logic vị từ cấp một là hệ thống logic mô tả quan hệ giữa các khái niệm
+                                    thông qua các quan hệ như AND, OR, NOT.</li>
+                                <li>Cấu trúc:
+                                    <ul>
+                                        <li>Khái niệm: biểu diễn thông tin về thế giới</li>
+                                        <li>Quan hệ: mô tả mối quan hệ giữa các khái niệm</li>
+                                        <li>Luật suy diễn: áp dụng quy tắc suy diễn để suy ra kết luận</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Hệ chuyên gia</li>
+                                        <li>Trí tuệ nhân tạo</li>
+                                        <li>Logic mệnh đề</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">7. Luật suy diễn</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Luật suy diễn là quá trình suy luận từ các sự kiện đã biết đến sự kiện
+                                    chưa
+                                    biết.</li>
+                                <li>Các loại luật suy diễn:
+                                    <ul>
+                                        <li>Modus Ponens: (p → q, p) ⊢ q</li>
+                                        <li>Modus Tollens: (p → q, ¬q) ⊢ ¬p</li>
+                                        <li>Quy tắc phân giải: (p ∨ q, ¬p ∨ r) ⊢ q ∨ r</li>
+                                        <li>Quy tắc đại số Boole: AND, OR, NOT</li>
+                                    </ul>
+                                </li>
+                                <li>Phương pháp suy diễn:
+                                    <ul>
+                                        <li>Suy diễn tiến: từ dữ kiện suy ra kết luận</li>
+                                        <li>Suy diễn ngược: từ kết luận suy ra dữ kiện</li>
+                                        <li>Suy diễn tiến dựa trên luật: áp dụng luật suy diễn để suy ra kết luận</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Hệ chuyên gia</li>
+                                        <li>Logic mệnh đề</li>
+                                        <li>Trí tuệ nhân tạo</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">8. Lập luận tiến và lùi</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Lập luận tiến và lùi là quá trình suy luận từ dữ kiện đã biết đến kết
+                                    luận
+                                    chưa biết và ngược lại.</li>
+                                <li>Cấu trúc:
+                                    <ul>
+                                        <li>Lập luận tiến: từ dữ kiện suy ra kết luận</li>
+                                        <li>Lập luận ngược: từ kết luận suy ra dữ kiện</li>
+                                        <li>Quy tắc suy luận: Modus Ponens, Modus Tollens, Quy tắc phân giải</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Hệ chuyên gia</li>
+                                        <li>Logic mệnh đề</li>
+                                        <li>Trí tuệ nhân tạo</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - "Nếu trời mưa thì đường ướt"
+                            - "Hoặc John ở nhà hoặc John ở trường"
+                            - Chứng minh tính hợp lệ của các lập luận
+                        </div>
+                    </div>
+
+                    <div class="topic-container">
+                        <div class="sub-topic">9. Lý thuyết quyết định</div>
+                        <div class="theory">
+                            <ul>
+                                <li>Định nghĩa: Lý thuyết quyết định là một lĩnh vực nghiên cứu về cách ra quyết định
+                                    tối ưu trong điều kiện không chắc chắn.</li>
+                                <li>Các thành phần cơ bản:
+                                    <ul>
+                                        <li>Quyết định: hành động chọn lựa trong một tình huống cụ thể</li>
+                                        <li>Chiến lược: kế hoạch hành động để đạt được mục tiêu</li>
+                                        <li>Hiệu quả: đánh giá kết quả của quyết định</li>
+                                    </ul>
+                                </li>
+                                <li>Các phương pháp quyết định:
+                                    <ul>
+                                        <li>Quyết định đa mục tiêu: đánh giá quyết định dựa trên nhiều mục tiêu</li>
+                                        <li>Quyết định dựa trên giả thuyết: đánh giá quyết định dựa trên giả thuyết
+                                            không chắc
+                                            chắn</li>
+                                        <li>Quyết định dựa trên rủi ro: đánh giá quyết định dựa trên rủi ro</li>
+                                    </ul>
+                                </li>
+                                <li>Ứng dụng:
+                                    <ul>
+                                        <li>Quản lý dự án</li>
+                                        <li>Quản lý rủi ro</li>
+                                        <li>Quản lý tài chính</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            VD:
+                            - Chọn lựa chiến lược kinh doanh
+                            - Đánh giá rủi ro trong quản lý dự án
+                            - Quản lý tài chính cá nhân
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
